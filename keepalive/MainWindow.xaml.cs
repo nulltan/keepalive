@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Cache;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,12 +23,6 @@ namespace keepalive
     {
         public MainWindow()
         {
-            SizeChanged += (o, e) =>
-            {
-                var r = SystemParameters.WorkArea;
-                Left = r.Right - ActualWidth;
-                //Top = r.Bottom - ActualHeight;
-            };
             InitializeComponent();
         }
 
@@ -55,16 +50,28 @@ namespace keepalive
             // Our image location needs to be dynamic to support themes!
             string currentTheme = "emi"; // Grab that from config, current implementation is for debugging only!
 
-            // ... Create a new BitmapImage
+            // Creating a new BitmapImage
             BitmapImage b = new BitmapImage();
             b.BeginInit();
-            b.UriSource = new Uri(@"\\theme\\" + currentTheme + "\\idle1.png", UriKind.Relative);
+            b.CacheOption = BitmapCacheOption.None;
+            b.UriCachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
+            b.CacheOption = BitmapCacheOption.OnLoad;
+            b.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            b.UriSource = new Uri(@"theme/" + currentTheme + "/idle1.png", UriKind.Relative);
             b.EndInit();
 
-            // ... Get Image reference from sender.
+            // Get Image reference from sender.
             var image = sender as Image;
-            // ... Assign Source.
+            // Assign Source.
             image.Source = b;
+
+            // We need to refresh our window location so we invoke an event that contains window placement code
+            Dispatcher.BeginInvoke(new EventHandler<RoutedEventArgs>(Window_Loaded), this, new RoutedEventArgs());
+        }
+
+        public double ImageHeight()
+        {
+            return charaImage.Height;
         }
     }
 }

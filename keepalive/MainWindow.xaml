@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:keepalive"
         mc:Ignorable="d"
-        Title="keepalive" Height="400" Width="300" ResizeMode="NoResize" IsEnabled="True" AllowsTransparency="True" WindowStyle="None" SizeToContent="WidthAndHeight" Topmost="True" ShowInTaskbar="False" Background="{x:Null}" Loaded="Window_Loaded">
+        Title="keepalive" Height="Auto" Width="Auto" IsEnabled="True" SizeToContent="WidthAndHeight" Topmost="True" ShowInTaskbar="False" Background="{x:Null}" Loaded="Window_Loaded" ResizeMode="NoResize" AllowsTransparency="True" WindowStyle="None">
     <Grid>
-        <Image x:Name="image" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" Stretch="Fill" Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}" ClipToBounds="True" Loaded="Image_Loaded">
+        <Image x:Name="charaImage" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="True" Stretch="Fill" Width="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelWidth}" Height="{Binding RelativeSource={RelativeSource Self}, Path=Source.PixelHeight}" ClipToBounds="True" Loaded="Image_Loaded">
             <Image.ContextMenu>
                 <ContextMenu StaysOpen="True">
                     <MenuItem Header="keepalive by Astar" IsEnabled="False"/>

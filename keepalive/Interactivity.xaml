@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:keepalive"
         mc:Ignorable="d"
-        Title="Interactivity" Height="Auto" Width="Auto" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+        Title="Interactivity" Height="Auto" Width="Auto" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" ResizeMode="NoResize" SizeToContent="WidthAndHeight" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded">
     <Grid>
-        
+        <TextBox x:Name="txtAction" Height="32" MinHeight="32" MaxHeight="35" Background="#FFFFFDDA" Width="300" KeyDown="TextBox_KeyDown" />
     </Grid>
 </Window>

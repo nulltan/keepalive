@@ -48,7 +48,7 @@ namespace keepalive
         private void Image_Loaded(object sender, RoutedEventArgs e)
         {
             // Our image location needs to be dynamic to support themes!
-            string currentTheme = "emi"; // Grab that from config, current implementation is for debugging only!
+            string currentTheme = "blank"; // Grab that from config, current implementation is for debugging only!
 
             // Creating a new BitmapImage
             BitmapImage b = new BitmapImage();
@@ -67,6 +67,10 @@ namespace keepalive
 
             // We need to refresh our window location so we invoke an event that contains window placement code
             Dispatcher.BeginInvoke(new EventHandler<RoutedEventArgs>(Window_Loaded), this, new RoutedEventArgs());
+
+            //Open up interactivity window
+            Interactivity interactivity = new Interactivity();
+            interactivity.Show();
         }
 
         public double ImageHeight()
